@@ -2,7 +2,7 @@
   "user": [
     {
       "id": 2,
-      "img": "/src/assets/Avatar(1).png",
+      "img": "src/img/Avatar.png",
       "name": "Jenny",
       "surname": "Wilson",
       "email": "jessica.hanson@example.com",
@@ -13,7 +13,7 @@
     },
     {
       "id": 3,
-      "img": "/src/assets/Avatar(2).png",
+      "img": "src/img/Avatar(1).png",
       "name": "Guy",
       "surname": "Hawkinse",
       "email": "bill.sanders@example.com",
@@ -24,7 +24,7 @@
     },
     {
       "id": 4,
-      "img": "/src/assets/Avatar(3).png",
+      "img": "/src/img/Avatar(3).png",
       "name": "Cody",
       "surname": "Fisher",
       "email": "michael.mitc@example.com",
@@ -35,7 +35,7 @@
     },
     {
       "id": 5,
-      "img": "/src/assets/Avatar(4).png",
+      "img": "/src/img/Avatar(4).png",
       "name": "Esther",
       "surname": "Howardee",
       "email": "felicia.re@example.com",
@@ -46,7 +46,7 @@
     },
     {
       "id": 6,
-      "img": "/src/assets/Avatar(5).png",
+      "img": "/src/img/Avatar(5).png",
       "name": "Kristin",
       "surname": "Watson",
       "email": "kenzi.lawson@example.com",
@@ -57,7 +57,7 @@
     },
     {
       "id": 7,
-      "img": "/src/assets/Avatar(6).png",
+      "img": "/src/img/Avatar(6).png",
       "name": "Dianne",
       "surname": "Russell",
       "email": "deanna.curtis@example.com",

@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Switcher from "./assets/Switcher";
 
-import { Select, Space } from "antd";
+import axios from "axios";
+import SelectCom from "./assets/SelectCom";
 
 const App = () => {
   const handleChangeSelect = (value) => {
     console.log(`selected ${value}`);
   };
 
-  let thList = ["Img", "Email", "City", "Status", "Phone", "Opt"];
+  let thList = [
+    "Img",
+    "Email",
+    "Name & Surname",
+    "City",
+    "Status",
+    "Phone",
+    "Opt",
+  ];
+
+  const [tData, setTdata] = useState([]);
+
+  let api = "http://localhost:3000/user";
+
+  let getData = async () => {
+    try {
+      let { data } = await axios.get(api);
+      setTdata(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    console.log(localStorage.theme);
+  }, [localStorage.theme]);
 
   return (
     <div>
@@ -24,23 +54,15 @@ const App = () => {
         </div>
         <div className="block2 flex justify-between max-sm:flex-col-reverse pt-2 gap-2">
           <div className="flex justify-between gap-3 ">
-            <Select
-              onChange={handleChangeSelect}
-              defaultValue=""
-              className="max-md:w-full shadow-md w-[100px] rounded-[20px]"
-              // style={{ width: "100px" }}
-              options={[
+            <SelectCom
+              arr={[
                 { value: "", label: "All status" },
-                { value: "active", label: "Active" },
-                { value: "inactive", label: "Inactive" },
+                { value: true, label: "Active" },
+                { value: false, label: "Inactive" },
               ]}
             />
-            <Select
-              onChange={handleChangeSelect}
-              defaultValue="all"
-              className="max-md:w-full w-[100px] shadow-md"
-              // style={{ width: "100px" }}
-              options={[
+            <SelectCom
+              arr={[
                 { value: "", label: "All cities" },
                 { value: "dushanbe", label: "Dushanbe" },
                 { value: "bokhtar", label: "Bokhtar" },
@@ -60,19 +82,40 @@ const App = () => {
       <main>
         <div className="p-[10px_20px]">
           <table className="table  border w-full">
-            <tr>
-              {thList.map((e) => {
-                return <th className="text-[#fff] py-1 bg-[#6ca7c5]">{e}</th>;
+            <thead>
+              <tr>
+                {thList.map((e, i) => {
+                  return (
+                    <th key={i} className="text-[#fff] py-1 bg-[#6ca7c5]">
+                      {e}
+                    </th>
+                  );
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              {tData.map((e) => {
+                return (
+                  <tr key={e.id}>
+                    <td>
+                      <img
+                        src={e.img}
+                        className="w-[30px] h-[30px] rounded-[50px]"
+                        alt=""
+                      />
+                    </td>
+                    <td>{e.email}</td>
+                    <td>
+                      {e.name} {e.surname}
+                    </td>
+                    <td>{e.city}</td>
+                    <td>{e.status}</td>
+                    <td>{e.mobile_phone}</td>
+                    <td>{e.complete}</td>
+                  </tr>
+                );
               })}
-            </tr>
-            <tr>
-              <td>ferg</td>
-              <td>ferg</td>
-              <td>ferg</td>
-              <td>ferg</td>
-              <td>ferg</td>
-              <td>ferg</td>
-            </tr>
+            </tbody>
           </table>
         </div>
       </main>
