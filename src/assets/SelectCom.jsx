@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { ConfigProvider, Select, theme } from "antd";
+import { useSelector } from "react-redux";
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
 const SelectCom = ({ arr }) => {
-  let [isDark, setIsDark] = useState(true); //darkMode
+  let darkMode = useSelector((e) => e.slices.darkMode);
+  let [isDark, setIsDark] = useState(darkMode);
+
+  useEffect(() => {
+    setIsDark(darkMode);
+    console.log(darkMode);
+  }, [darkMode]);
   return (
     <div>
       <ConfigProvider

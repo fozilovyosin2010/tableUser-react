@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import UseDarkMode from "../hook/UseDarkMode";
+import { useDispatch } from "react-redux";
+import { setDarkMode } from "../reducers/globSlice";
 
 const Switcher = () => {
   let [colorTheme, setTheme] = UseDarkMode();
   let [darkSide, setDarkSide] = useState(colorTheme == "dark");
+  let disP = useDispatch();
+
+  useEffect(() => {
+    disP(setDarkMode(!darkSide));
+  }, [darkSide]);
 
   return (
     <div className="flex border border-[#ccc] rounded-[20px] p-[5px] gap-1">
