@@ -11,7 +11,6 @@ const SelectCom = ({ arr }) => {
 
   useEffect(() => {
     setIsDark(darkMode);
-    console.log(darkMode);
   }, [darkMode]);
   return (
     <div>
