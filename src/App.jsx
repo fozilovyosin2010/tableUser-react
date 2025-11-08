@@ -4,11 +4,10 @@ import Switcher from "./assets/Switcher";
 import axios from "axios";
 import SelectCom from "./assets/SelectCom";
 import SkeletonCom from "./assets/SkeletonCom";
+import MenuCom from "./assets/MenuCom";
 
 const App = () => {
-  const handleChangeSelect = (value) => {
-    console.log(`selected ${value}`);
-  };
+  // work with network error!
 
   let thList = [
     "Img",
@@ -126,7 +125,11 @@ const App = () => {
                       </span>
                     </td>
                     <td className="text">{e.mobile_phone}</td>
-                    <td>{e.complete}</td>
+                    <td>
+                      <div className="flex justify-center items-center">
+                        <MenuCom />
+                      </div>
+                    </td>
                   </tr>
                 );
               })}
