@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { ConfigProvider, Select, theme } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setValue } from "../reducers/globSlice";
 
-const handleChange = (value) => {
-  console.log(`selected ${value}`);
-};
-const SelectCom = ({ arr }) => {
+const SelectCom = ({ arr, name }) => {
   let darkMode = useSelector((e) => e.slices.darkMode);
   let [isDark, setIsDark] = useState(darkMode);
+
+  let disP = useDispatch();
 
   useEffect(() => {
     setIsDark(darkMode);
   }, [darkMode]);
+
+  const handleChange = (value) => {
+    if (name == "status") {
+      disP(setValue([value, "status"]));
+    } else {
+      disP(setValue([value, "city"]));
+    }
+  };
   return (
     <div>
       <ConfigProvider
@@ -21,6 +29,7 @@ const SelectCom = ({ arr }) => {
       >
         <Select
           defaultValue=""
+          className="shadow-[0_0_5px_#ccc] rounded-md"
           style={{ width: 120 }}
           onChange={handleChange}
           options={arr.map((e) => {

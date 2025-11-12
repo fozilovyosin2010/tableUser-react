@@ -1,36 +1,31 @@
 import { Skeleton } from "antd";
-import { useState } from "react";
 
-const SkeletonCom = ({ type, block, size }) => {
-  const [active, setActive] = useState(false);
-  const [buttonShape, setButtonShape] = useState("default");
-  const [avatarShape, setAvatarShape] = useState("circle");
-
-  // size :default,small,large
-  // block:true,false ->display-block
-  // type:img, normal
+const SkeletonCom = () => {
   return (
     <tr>
-      <td>
-        <Skeleton.Button active={true} size={"large"} shape={"circle"} />
+      <td className="border border-[#fff] dark:border-[gray] styleTd dark:bg-[#ccc] dark:text-black text">
+        <div className="w-[50px] h-[50px] rounded-[50px]">
+          <Skeleton.Button active={true} size={"small"} shape={"circle"} />
+        </div>
       </td>
-      <td>
-        <Skeleton.Input active={true} size={"large"} block={true} />
+      <td className="border border-[#fff] dark:border-[gray] styleTd dark:bg-[#ccc] dark:text-black text">
+        <Skeleton.Input active={true} size={"small"} block={true} />
       </td>
-      <td>
-        <Skeleton.Input active={true} size={"large"} block={true} />
+      <td className="border border-[#fff] dark:border-[gray] styleTd dark:bg-[#ccc] dark:text-black text">
+        <Skeleton.Input active={true} size={"small"} block={true} />
       </td>
-      <td>
-        <Skeleton.Input active={true} size={"large"} block={true} />
+      <td className="border border-[#fff] dark:border-[gray] styleTd dark:bg-[#ccc] dark:text-black text">
+        <Skeleton.Input active={true} size={"small"} block={true} />
       </td>
-      <td>
-        <Skeleton.Input active={true} size={"large"} block={true} />
+      <td className="border border-[#fff] dark:border-[gray] styleTd dark:bg-[#ccc] dark:text-black text">
+        <Skeleton.Input active={true} size={"small"} block={true} />
       </td>
-      <td>
-        <Skeleton.Input active={true} size={"large"} block={true} />
+
+      <td className="border border-[#fff] dark:border-[gray] bg-[#ece1e1] p-[10px] dark:bg-[#ccc] dark:text-black text">
+        <Skeleton.Input active={true} size={"small"} block={false} />
       </td>
-      <td>
-        <Skeleton.Input active={true} size={"large"} block={true} />
+      <td className="border border-[#fff] dark:border-[gray] bg-[#ece1e1] p-[10px] dark:bg-[#ccc] dark:text-black text">
+        <Skeleton.Input active={true} size={"small"} block={false} />
       </td>
     </tr>
   );
