@@ -6,6 +6,7 @@ import SelectCom from "./assets/SelectCom";
 import SkeletonCom from "./assets/SkeletonCom";
 import MenuCom from "./assets/MenuCom";
 import { useSelector } from "react-redux";
+import FormCom from "./assets/FormCom";
 
 const App = () => {
   let thList = [
@@ -51,6 +52,8 @@ const App = () => {
 
   let statusVal = useSelector((e) => e.slices.status);
   let cityVal = useSelector((e) => e.slices.city);
+
+  let [addModal, setAddModal] = useState(true);
 
   return (
     <div className="dark:bg-gradient-to-tl duration-500 dark:from-[#0a013d] dark:text-[#fff] dark:to-[#464444] min-h-screen">
@@ -149,7 +152,7 @@ const App = () => {
                   .map((e) => {
                     return (
                       <tr key={e.id}>
-                        <td className="border border-[#fff] dark:border-[gray] styleTd dark:bg-[#ccc] dark:text-black text">
+                        <td className="border border-[#fff] dark:border-[gray] styleTd dark:bg-[#ccc] text">
                           <img
                             src={e.img}
                             className="w-[50px] h-[50px] rounded-[50px]"
@@ -202,6 +205,18 @@ const App = () => {
             </table>
           )}
         </div>
+        {addModal ? (
+          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]">
+            <div className="bg-[#fff] w-[350px] p-[20px] ">
+              <div className="flex justify-end">
+                <i className="bx bx-x"></i>
+              </div>
+              <div className="pt-4">
+                <FormCom />
+              </div>
+            </div>
+          </div>
+        ) : null}
       </main>
     </div>
   );

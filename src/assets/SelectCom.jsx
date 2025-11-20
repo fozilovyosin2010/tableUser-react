@@ -16,7 +16,7 @@ const SelectCom = ({ arr, name }) => {
   const handleChange = (value) => {
     if (name == "status") {
       disP(setValue([value, "status"]));
-    } else {
+    } else if (name == "city") {
       disP(setValue([value, "city"]));
     }
   };
@@ -29,8 +29,7 @@ const SelectCom = ({ arr, name }) => {
       >
         <Select
           defaultValue=""
-          className="shadow-[0_0_5px_#ccc] rounded-md"
-          style={{ width: 120 }}
+          className="shadow-[0_0_5px_#ccc] rounded-md w-full  "
           onChange={handleChange}
           options={arr.map((e) => {
             return e;
