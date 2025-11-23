@@ -5,6 +5,9 @@ import axios from "axios";
 import SelectCom from "./assets/SelectCom";
 import SkeletonCom from "./assets/SkeletonCom";
 import MenuCom from "./assets/MenuCom";
+
+import { Button, Form, Input } from "antd";
+import { ConfigProvider, Select, theme } from "antd";
 import { useSelector } from "react-redux";
 import FormCom from "./assets/FormCom";
 
@@ -48,12 +51,26 @@ const App = () => {
     getData();
   }, []);
 
+  let postData = async (obj) => {
+    try {
+      let { data } = await axios.post(api, obj);
+      getData();
+      setAddModal(false); //for addModal
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   let [inpSearch, setInpSearch] = useState("");
 
   let statusVal = useSelector((e) => e.slices.status);
   let cityVal = useSelector((e) => e.slices.city);
 
-  let [addModal, setAddModal] = useState(true);
+  let [addModal, setAddModal] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = addModal ? "hidden" : "visible";
+  }, [addModal]);
 
   return (
     <div className="dark:bg-gradient-to-tl duration-500 dark:from-[#0a013d] dark:text-[#fff] dark:to-[#464444] min-h-screen">
@@ -61,8 +78,11 @@ const App = () => {
         <div className="block1 flex justify-between dark:text-[#fff]">
           <div className="font-semibold text-[20px]">User list</div>
           <div className="flex gap-3">
-            <button className="bg-[blue] dark:bg-[#0101a8] text-[#fff] p-[5px_12px] rounded-md font-medium">
-              New
+            <button
+              onClick={() => setAddModal(true)}
+              className="bg-[blue] dark:bg-[#0101a8] text-[#fff] p-[5px_12px] rounded-md font-medium"
+            >
+              Add
             </button>
             <Switcher />
           </div>
@@ -209,10 +229,18 @@ const App = () => {
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]">
             <div className="bg-[#fff] w-[350px] p-[20px] ">
               <div className="flex justify-end">
-                <i className="bx bx-x"></i>
+                <button
+                  className="flex items-center"
+                  onClick={() => {
+                    setAddModal(false);
+                  }}
+                >
+                  <i className="bx bx-x"></i>
+                </button>
               </div>
+              {/* form */}
               <div className="pt-4">
-                <FormCom />
+                <FormCom req={postData} />
               </div>
             </div>
           </div>

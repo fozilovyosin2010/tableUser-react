@@ -1,71 +1,124 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Input } from "antd";
-import SelectCom from "./SelectCom";
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+import { ConfigProvider, Select, theme } from "antd";
+import { useSelector } from "react-redux";
 
-const FormCom = () => {
+// work with functionalities
+const FormCom = ({ req }) => {
+  let [formData] = Form.useForm();
+
+  const onFinish = (values) => {
+    req(values);
+    formData.resetFields();
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
+  // from select dark mode/functions
+  let darkMode = useSelector((e) => e.slices.darkMode);
+  let [isDark, setIsDark] = useState(darkMode);
+
+  useEffect(() => {
+    setIsDark(darkMode);
+  }, [darkMode]);
+
   return (
     <Form
       name="basic"
       layout="vertical"
       style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      initialValues={{ status: "", city: "" }}
+      form={formData}
     >
-      <Form.Item name="name">
-        <Input required placeholder="Input your name" />
+      <Form.Item
+        name="name"
+        rules={[{ required: true, message: "Please, input your name!" }]}
+      >
+        <Input placeholder="Input your name" minLength={5} maxLength={15} />
       </Form.Item>
 
-      <Form.Item name="       ">
-        <Input size="middle" required placeholder="Input your surname" />
-      </Form.Item>
-      <Form.Item name="email">
+      <Form.Item
+        name="surname"
+        rules={[{ required: true, message: "Please input your surname!" }]}
+      >
         <Input
           size="middle"
-          required
-          type="email"
-          placeholder="Input your email"
+          placeholder="Input your surname"
+          minLength={5}
+          maxLength={15}
         />
       </Form.Item>
-      <Form.Item name="Phone numbers">
+      <Form.Item
+        name="email"
+        rules={[
+          { required: true, message: "Please input your E-mail!" },
+          { type: "email", message: "The input is not valid E-mail!" },
+        ]}
+      >
+        <Input size="middle" type="email" placeholder="Input your email" />
+      </Form.Item>
+      <Form.Item
+        name="mobile_phone"
+        rules={[
+          { required: true, message: "Please input your phone numbers" },
+          {
+            pattern: "[0-9]{9}",
+            message: "Phone numbers must be 9 digits (numbers only)!",
+          },
+        ]}
+      >
         <Input
           size="middle"
-          required
-          type="number"
+          type="text"
           placeholder="Input your phone numbers"
         />
       </Form.Item>
-      <Form.Item name="image">
-        <Input size="middle" required placeholder="Input your image" />
+      <Form.Item
+        name="img"
+        rules={[{ required: true, message: "Please, input your image" }]}
+      >
+        <Input size="middle" placeholder="Input your image" />
       </Form.Item>
-      <div className="flex justify-between">
-        <Form.Item label="City" name="city">
-          <SelectCom
-            arr={[
-              { value: "", label: "All cities" },
-              { value: "dushanbe", label: "Dushanbe" },
-              { value: "bokhtar", label: "Bokhtar" },
-              { value: "Kulob", label: "Kulob" },
-              { value: "Hisor", label: "Hisor" },
-              { value: "Khujand", label: "Khujand" },
-            ]}
-          />
-        </Form.Item>
-        <Form.Item label="Status" name="status">
-          <SelectCom
-            arr={[
-              { value: "", label: "All status" },
-              { value: "active", label: "Active" },
-              { value: "inactive", label: "Inactive" },
-            ]}
-          />
-        </Form.Item>
+      {/* select */}
+      <div className="flex justify-between gap-3 pb-2">
+        <ConfigProvider
+          theme={{
+            algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
+          }}
+        >
+          <Form.Item
+            name="status"
+            rules={[{ required: true, message: "Please, select a status" }]}
+          >
+            <Select
+              className="shadow-[0_0_5px_#ccc] rounded-md w-full"
+              options={[
+                { value: "", label: "All status" },
+                { value: "ACTIVE", label: "Active" },
+                { value: "INACTIVE", label: "Inactive" },
+              ]}
+            />
+          </Form.Item>
+          <Form.Item
+            name="city"
+            rules={[{ required: true, message: "Please, select a city" }]}
+          >
+            <Select
+              className="shadow-[0_0_5px_#ccc] rounded-md w-full"
+              options={[
+                { value: "", label: "All cities" },
+                { value: "dushanbe", label: "Dushanbe" },
+                { value: "Bokhtar", label: "Bokhtar" },
+                { value: "Kulob", label: "Kulob" },
+                { value: "Hisor", label: "Hisor" },
+                { value: "Khujand", label: "Khujand" },
+              ]}
+            />
+          </Form.Item>
+        </ConfigProvider>
       </div>
 
       <Form.Item label={null}>
