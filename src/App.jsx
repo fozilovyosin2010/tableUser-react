@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Switcher from "./assets/Switcher";
 
 import axios from "axios";
@@ -67,6 +67,7 @@ const App = () => {
   let cityVal = useSelector((e) => e.slices.city);
 
   let [addModal, setAddModal] = useState(false);
+  let addModalRef = useRef();
 
   useEffect(() => {
     document.body.style.overflow = addModal ? "hidden" : "visible";
@@ -226,14 +227,20 @@ const App = () => {
           )}
         </div>
         {addModal ? (
-          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]">
-            <div className="bg-[#fff] w-[350px] p-[20px] ">
+          <div
+            onClick={(e) => {
+              if (e.target == addModalRef.current) {
+                setAddModal(false);
+              }
+            }}
+            ref={addModalRef}
+            className="absolute  top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]"
+          >
+            <div className="bg-[#fff] dark:bg-[#0d063c] w-[350px] p-[20px] rounded-md">
               <div className="flex justify-end">
                 <button
                   className="flex items-center"
-                  onClick={() => {
-                    setAddModal(false);
-                  }}
+                  onClick={() => setAddModal(false)}
                 >
                   <i className="bx bx-x"></i>
                 </button>
