@@ -10,11 +10,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { ListItemIcon } from "@mui/material";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setEditModal } from "../reducers/globSlice";
 
 const options = [
   { label: "Edit", icon: <EditIcon /> },
   { label: "Delete", icon: <DeleteIcon /> },
-  { label: "Complete", icon: <CheckCircleIcon /> },
 ];
 
 const ITEM_HEIGHT = 48;
@@ -24,6 +25,8 @@ const MenuCom = ({ id, getReq }) => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  let disP = useDispatch();
 
   const handleClose = (e) => {
     setAnchorEl(null);
@@ -37,6 +40,8 @@ const MenuCom = ({ id, getReq }) => {
         }
       };
       delData(id);
+    } else if (e === "Edit") {
+      disP(setEditModal(true));
     }
   };
 

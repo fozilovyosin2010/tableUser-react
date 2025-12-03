@@ -8,8 +8,9 @@ import MenuCom from "./assets/MenuCom";
 
 import { Button, Form, Input } from "antd";
 import { ConfigProvider, Select, theme } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FormCom from "./assets/FormCom";
+import { setEditModal } from "./reducers/globSlice";
 
 const App = () => {
   let thList = [
@@ -27,6 +28,8 @@ const App = () => {
   let api = "http://localhost:3000/user";
 
   let [load, setLoad] = useState(true);
+
+  let disP = useDispatch();
 
   // network Err
 
@@ -68,6 +71,9 @@ const App = () => {
 
   let [addModal, setAddModal] = useState(false);
   let addModalRef = useRef();
+
+  let editModal = useSelector((e) => e.slices.editMod);
+  let editModalRef = useRef();
 
   useEffect(() => {
     document.body.style.overflow = addModal ? "hidden" : "visible";
@@ -237,7 +243,9 @@ const App = () => {
             className="absolute  top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]"
           >
             <div className="bg-[#fff] dark:bg-[#0d063c] w-[350px] p-[20px] rounded-md">
-              <div className="flex justify-end">
+              <div className="flex justify-between">
+                <div className="font-medium text-[20px] pb-2">Add</div>
+
                 <button
                   className="flex items-center"
                   onClick={() => setAddModal(false)}
@@ -248,6 +256,38 @@ const App = () => {
               {/* form */}
               <div className="pt-4">
                 <FormCom req={postData} />
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        {editModal ? (
+          <div
+            form
+            onClick={(e) => {
+              if (e.target == editModalRef.current) {
+                disP(setEditModal(false));
+              }
+            }}
+            ref={editModalRef}
+            className="absolute  top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]"
+          >
+            <div className="bg-[#fff] dark:bg-[#0d063c] w-[350px] p-[20px] rounded-md">
+              <div className="flex justify-between">
+                <div className="font-medium text-[20px] pb-2">Edit</div>
+
+                <button
+                  className="flex items-center"
+                  onClick={() => disP(setEditModal(false))}
+                >
+                  <i className="bx bx-x"></i>
+                </button>
+              </div>
+              {/* form */}
+              <div className="pt-4">
+                <FormCom
+                // req={postData}
+                />
               </div>
             </div>
           </div>

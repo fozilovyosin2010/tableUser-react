@@ -1,6 +1,26 @@
 {
   "user": [
     {
+      "id": "2",
+      "img": "src/img/Avatar.png",
+      "name": "Jenny",
+      "surname": "Wilson",
+      "email": "jessica.hanson@example.com",
+      "city": "Kulob",
+      "status": "INACTIVE",
+      "mobile_phone": 888880090
+    },
+    {
+      "id": "4",
+      "img": "/src/img/Avatar(3).png",
+      "name": "Cody",
+      "surname": "Fisher",
+      "email": "michael.mitc@example.com",
+      "city": "Dushanbe",
+      "status": "ACTIVE",
+      "mobile_phone": 888880090
+    },
+    {
       "id": "3",
       "img": "src/img/Avatar(1).png",
       "name": "Guy",
@@ -51,24 +71,14 @@
       "mobile_phone": "919697875"
     },
     {
-      "id": "1763834417209",
-      "name": "Nika Umnova",
-      "surname": "kfwekgfwe",
-      "email": "dqw@gmail.com",
-      "mobile_phone": "242385423",
-      "img": "fiwugweg",
-      "status": "ACTIVE",
-      "city": "Bokhtar"
-    },
-    {
       "id": "12fd",
       "name": "yosin",
       "surname": "fozilov",
       "email": "umnonika1@gmail.com",
       "mobile_phone": "918665979",
-      "img": "riojgoer",
+      "img": "src/img/Avatar(7).png",
       "status": "ACTIVE",
-      "city": "Bokhtar"
+      "city": "Dushanbe"
     }
   ]
 }

@@ -3,7 +3,6 @@ import { Button, Form, Input } from "antd";
 import { ConfigProvider, Select, theme } from "antd";
 import { useSelector } from "react-redux";
 
-// work with functionalities
 const FormCom = ({ req }) => {
   let [formData] = Form.useForm();
 
@@ -119,7 +118,6 @@ const FormCom = ({ req }) => {
             />
           </Form.Item>
         </div>
-        <input type="color" />
         <Form.Item label={null}>
           <button className="border p-[5px_12px] rounded-md shadow-[0_0_5px_#ccc] bg-gradient-to-tr from-blue-500 text-[#fff] to-blue-700  dark:bg-gradient-to-t dark:border-[rgb(66,66,66)] dark:from-[rgb(20,20,20)] dark:to-[rgb(20,20,20)] dark:shadow-none">
             Submit

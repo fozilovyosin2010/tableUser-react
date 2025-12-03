@@ -6,6 +6,7 @@ export const globSlice = createSlice({
     darkMode: localStorage.theme == "dark" || false,
     status: "",
     city: "",
+    editMod: false,
   },
   reducers: {
     setDarkMode: (state, action) => {
@@ -18,9 +19,12 @@ export const globSlice = createSlice({
         state.city = action.payload[0];
       }
     },
+    setEditModal: (state, action) => {
+      state.editMod = action.payload;
+    },
   },
 });
 
 export default globSlice.reducer;
 
-export const { setDarkMode, setValue } = globSlice.actions;
+export const { setDarkMode, setValue, setEditModal } = globSlice.actions;

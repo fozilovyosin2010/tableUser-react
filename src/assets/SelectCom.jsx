@@ -29,7 +29,7 @@ const SelectCom = ({ arr, name }) => {
       >
         <Select
           defaultValue=""
-          className="shadow-[0_0_5px_#ccc] rounded-md w-full"
+          className="shadow-[0_0_5px_#ccc] dark:shadow-[0_0_10px_#04001a] rounded-md w-full"
           onChange={handleChange}
           options={arr.map((e) => {
             return e;
