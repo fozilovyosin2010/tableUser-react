@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,6 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { ListItemIcon } from "@mui/material";
+import axios from "axios";
 
 const options = [
   { label: "Edit", icon: <EditIcon /> },
@@ -16,14 +18,26 @@ const options = [
 ];
 
 const ITEM_HEIGHT = 48;
-const MenuCom = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const MenuCom = ({ id, getReq }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+
+  const handleClose = (e) => {
     setAnchorEl(null);
+    if (e === "Delete") {
+      let delData = async (id) => {
+        try {
+          let { data } = await axios.delete(`http://localhost:3000/user/${id}`);
+          getReq();
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      delData(id);
+    }
   };
 
   return (
@@ -55,14 +69,14 @@ const MenuCom = () => {
           },
         }}
       >
-        {options.map((option) => (
+        {options.map((e) => (
           <MenuItem
-            key={option.label}
-            selected={option === "Pyxis"}
-            onClick={handleClose}
+            key={e.label}
+            selected={e === "Pyxis"}
+            onClick={() => handleClose(e.label)}
           >
-            <ListItemIcon>{option.icon}</ListItemIcon>
-            <ListItemIcon>{option.label}</ListItemIcon>
+            <ListItemIcon>{e.icon}</ListItemIcon>
+            <ListItemIcon>{e.label}</ListItemIcon>
           </MenuItem>
         ))}
       </Menu>

@@ -1,16 +1,6 @@
 {
   "user": [
     {
-      "id": "2",
-      "img": "src/img/Avatar.png",
-      "name": "Jenny",
-      "surname": "Wilson",
-      "email": "jessica.hanson@example.com",
-      "city": "Kulob",
-      "status": "INACTIVE",
-      "mobile_phone": 888880090
-    },
-    {
       "id": "3",
       "img": "src/img/Avatar(1).png",
       "name": "Guy",
@@ -19,16 +9,6 @@
       "city": "Bokhtar",
       "status": "INACTIVE",
       "mobile_phone": "8888800902"
-    },
-    {
-      "id": "4",
-      "img": "/src/img/Avatar(3).png",
-      "name": "Cody",
-      "surname": "Fisher",
-      "email": "michael.mitc@example.com",
-      "city": "Dushanbe",
-      "status": "ACTIVE",
-      "mobile_phone": 888880090
     },
     {
       "id": "5",
@@ -61,16 +41,6 @@
       "mobile_phone": 888880090
     },
     {
-      "id": "1693221316657",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgJGAKE5edtJkPxHsMg3Uo8pfdrySYBmkUhQ&usqp=CAU",
-      "name": "Olim",
-      "surname": "Yuldoshev",
-      "email": "oyuldoshev39@gmail.com",
-      "city": "Hisor",
-      "status": "INACTIVE",
-      "mobile_phone": "919697875"
-    },
-    {
       "id": "1693222148733",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREKuU0-OYCvYw4bXbzl07kF4jIGTSJVZRyYA&usqp=CAU",
       "name": "Olim",
@@ -89,36 +59,6 @@
       "img": "fiwugweg",
       "status": "ACTIVE",
       "city": "Bokhtar"
-    },
-    {
-      "id": "1763834904780",
-      "name": "yosin",
-      "surname": "fozilov",
-      "email": "umnonika1@gmail.com",
-      "mobile_phone": "129841241",
-      "img": "fweiog",
-      "status": "ACTIVE",
-      "city": "Bokhtar"
-    },
-    {
-      "id": "1763835128564",
-      "name": "qwffefw",
-      "surname": "fefiwjg",
-      "email": "dqwdq@gmail.comf",
-      "mobile_phone": "923059299",
-      "img": "fiweojgoiewg",
-      "status": "ACTIVE",
-      "city": "Bokhtar"
-    },
-    {
-      "id": "0664",
-      "name": "Nika Umnova",
-      "surname": "kfwekgfwe",
-      "email": "dqw@gmail.com",
-      "mobile_phone": "923059299",
-      "img": "fiwugweg",
-      "status": "ACTIVE",
-      "city": "Kulob"
     },
     {
       "id": "12fd",

@@ -205,7 +205,7 @@ const App = () => {
                         </td>
                         <td className="border border-[#fff] dark:border-[gray] bg-[#ece1e1] p-[10px] dark:bg-[#ccc] dark:text-black text">
                           <div className="flex justify-center items-center">
-                            <MenuCom />
+                            <MenuCom id={e.id} getReq={getData} />
                           </div>
                         </td>
                       </tr>

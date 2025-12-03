@@ -94,7 +94,7 @@ const FormCom = ({ req }) => {
             rules={[{ required: true, message: "Please, select a status" }]}
           >
             <Select
-              className="shadow-[0_0_5px_#ccc] rounded-md w-full"
+              className="shadow-[0_0_5px_#ccc] dark:shadow-none rounded-md w-full"
               options={[
                 { value: "", label: "All status" },
                 { value: "ACTIVE", label: "Active" },
@@ -107,7 +107,7 @@ const FormCom = ({ req }) => {
             rules={[{ required: true, message: "Please, select a city" }]}
           >
             <Select
-              className="shadow-[0_0_5px_#ccc] rounded-md w-full"
+              className="shadow-[0_0_5px_#ccc] dark:shadow-none rounded-md w-full"
               options={[
                 { value: "", label: "All cities" },
                 { value: "dushanbe", label: "Dushanbe" },
@@ -119,9 +119,9 @@ const FormCom = ({ req }) => {
             />
           </Form.Item>
         </div>
-
+        <input type="color" />
         <Form.Item label={null}>
-          <button className="border p-[5px_12px] rounded-md shadow-[0_0_5px_#ccc] bg-gradient-to-tr from-blue-500 text-[#fff] to-blue-700  dark:bg-gradient-to-t dark:from-black dark:to-black dark:shadow-none">
+          <button className="border p-[5px_12px] rounded-md shadow-[0_0_5px_#ccc] bg-gradient-to-tr from-blue-500 text-[#fff] to-blue-700  dark:bg-gradient-to-t dark:border-[rgb(66,66,66)] dark:from-[rgb(20,20,20)] dark:to-[rgb(20,20,20)] dark:shadow-none">
             Submit
           </button>
         </Form.Item>
