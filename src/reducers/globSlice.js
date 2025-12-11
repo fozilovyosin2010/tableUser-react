@@ -7,6 +7,7 @@ export const globSlice = createSlice({
     status: "",
     city: "",
     editMod: false,
+    editObj: [],
   },
   reducers: {
     setDarkMode: (state, action) => {
@@ -22,9 +23,13 @@ export const globSlice = createSlice({
     setEditModal: (state, action) => {
       state.editMod = action.payload;
     },
+    setEditObj: (state, action) => {
+      state.editObj = action.payload;
+    },
   },
 });
 
 export default globSlice.reducer;
 
-export const { setDarkMode, setValue, setEditModal } = globSlice.actions;
+export const { setDarkMode, setValue, setEditModal, setEditObj } =
+  globSlice.actions;

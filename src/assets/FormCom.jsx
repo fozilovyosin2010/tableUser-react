@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import { ConfigProvider, Select, theme } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditModal, setEditObj } from "../reducers/globSlice";
 
-const FormCom = ({ req }) => {
+const FormCom = ({ req, type }) => {
+  let disP = useDispatch();
   let [formData] = Form.useForm();
 
+  // for edit modal - type
+  let [obj, setObj] = useState(useSelector((e) => e.slices.editObj));
+
   const onFinish = (values) => {
-    req(values);
-    formData.resetFields();
+    if (type == "addModal") {
+      req(values);
+      formData.resetFields();
+    } else {
+      req(obj.id, values);
+      disP(setEditObj([]));
+      disP(setEditModal(false));
+      formData.resetFields();
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -34,14 +46,17 @@ const FormCom = ({ req }) => {
         style={{ maxWidth: 600 }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        initialValues={{ status: "", city: "" }}
+        initialValues={
+          type == "editModal" && obj ? obj : { status: "", city: "" }
+        }
         form={formData}
+        className="md:grid grid-cols-2 gap-2"
       >
         <Form.Item
           name="name"
           rules={[{ required: true, message: "Please, input your name!" }]}
         >
-          <Input placeholder="Input your name" minLength={5} maxLength={15} />
+          <Input placeholder="Input your name" minLength={3} maxLength={15} />
         </Form.Item>
 
         <Form.Item
@@ -49,9 +64,8 @@ const FormCom = ({ req }) => {
           rules={[{ required: true, message: "Please input your surname!" }]}
         >
           <Input
-            size="middle"
             placeholder="Input your surname"
-            minLength={5}
+            minLength={3}
             maxLength={15}
           />
         </Form.Item>
@@ -69,16 +83,12 @@ const FormCom = ({ req }) => {
           rules={[
             { required: true, message: "Please input your phone numbers" },
             {
-              pattern: "[0-9]{9}",
+              pattern: /^[0-9]{9}$/,
               message: "Phone numbers must be 9 digits (numbers only)!",
             },
           ]}
         >
-          <Input
-            size="middle"
-            type="text"
-            placeholder="Input your phone numbers"
-          />
+          <Input type="text" placeholder="Input your phone numbers" />
         </Form.Item>
         <Form.Item
           name="img"
@@ -93,7 +103,6 @@ const FormCom = ({ req }) => {
             rules={[{ required: true, message: "Please, select a status" }]}
           >
             <Select
-              className="shadow-[0_0_5px_#ccc] dark:shadow-none rounded-md w-full"
               options={[
                 { value: "", label: "All status" },
                 { value: "ACTIVE", label: "Active" },
@@ -106,7 +115,6 @@ const FormCom = ({ req }) => {
             rules={[{ required: true, message: "Please, select a city" }]}
           >
             <Select
-              className="shadow-[0_0_5px_#ccc] dark:shadow-none rounded-md w-full"
               options={[
                 { value: "", label: "All cities" },
                 { value: "dushanbe", label: "Dushanbe" },

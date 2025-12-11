@@ -1,18 +1,18 @@
 {
   "user": [
     {
-      "id": "2",
-      "img": "src/img/Avatar.png",
       "name": "Jenny",
       "surname": "Wilson",
       "email": "jessica.hanson@example.com",
-      "city": "Kulob",
+      "mobile_phone": "888880090",
+      "img": "public/img/Avatar.png",
       "status": "INACTIVE",
-      "mobile_phone": 888880090
+      "city": "Kulob",
+      "id": "2"
     },
     {
       "id": "4",
-      "img": "/src/img/Avatar(3).png",
+      "img": "/public/img/Avatar(3).png",
       "name": "Cody",
       "surname": "Fisher",
       "email": "michael.mitc@example.com",
@@ -21,18 +21,18 @@
       "mobile_phone": 888880090
     },
     {
-      "id": "3",
-      "img": "src/img/Avatar(1).png",
       "name": "Guy",
       "surname": "Hawkinse",
       "email": "bill.sanders@example.com",
-      "city": "Bokhtar",
+      "mobile_phone": "8888800902",
+      "img": "public/img/Avatar(1).png",
       "status": "INACTIVE",
-      "mobile_phone": "8888800902"
+      "city": "Bokhtar",
+      "id": "3"
     },
     {
       "id": "5",
-      "img": "/src/img/Avatar(4).png",
+      "img": "/public/img/Avatar(4).png",
       "name": "Esther",
       "surname": "Howardee",
       "email": "felicia.re@example.com",
@@ -41,18 +41,18 @@
       "mobile_phone": "888880090"
     },
     {
-      "id": "6",
-      "img": "/src/img/Avatar(5).png",
       "name": "Kristin",
-      "surname": "Watson",
+      "surname": "Watsonyjon",
       "email": "kenzi.lawson@example.com",
-      "city": "Dushanbe",
+      "mobile_phone": "888880091",
+      "img": "/public/img/Avatar(5).png",
       "status": "ACTIVE",
-      "mobile_phone": 888880090
+      "city": "Kulob",
+      "id": "6"
     },
     {
       "id": "7",
-      "img": "/src/img/Avatar(6).png",
+      "img": "/public/img/Avatar(6).png",
       "name": "Dianne",
       "surname": "Russell",
       "email": "deanna.curtis@example.com",
@@ -71,14 +71,14 @@
       "mobile_phone": "919697875"
     },
     {
-      "id": "12fd",
       "name": "yosin",
       "surname": "fozilov",
-      "email": "umnonika1@gmail.com",
-      "mobile_phone": "918665979",
-      "img": "src/img/Avatar(7).png",
+      "email": "fefowej@gmail.com",
+      "mobile_phone": "912412432",
+      "img": "/public/img/Avatar(7).png",
       "status": "ACTIVE",
-      "city": "Dushanbe"
+      "city": "Hisor",
+      "id": "908f"
     }
   ]
 }

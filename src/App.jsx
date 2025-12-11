@@ -64,6 +64,15 @@ const App = () => {
     }
   };
 
+  let putData = async (id, obj) => {
+    try {
+      let { data } = await axios.put(`${api}/${id}`, obj);
+      getData();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   let [inpSearch, setInpSearch] = useState("");
 
   let statusVal = useSelector((e) => e.slices.status);
@@ -77,7 +86,8 @@ const App = () => {
 
   useEffect(() => {
     document.body.style.overflow = addModal ? "hidden" : "visible";
-  }, [addModal]);
+    document.body.style.overflow = editModal ? "hidden" : "visible";
+  }, [addModal, editModal]);
 
   return (
     <div className="dark:bg-gradient-to-tl duration-500 dark:from-[#0a013d] dark:text-[#fff] dark:to-[#464444] min-h-screen">
@@ -121,7 +131,7 @@ const App = () => {
             placeholder="Search"
             value={inpSearch}
             onChange={(e) => setInpSearch(e.target.value)}
-            className="border shadow-[0_0_5px_#ccc] dark:text-[#fff] dark:placeholder:text-[#fff] p-[3px_15px] rounded-md dark:border-[#524f4f]
+            className="border shadow-[0_0_5px_#ccc] dark:shadow-[0_0_8px_#000] dark:text-[#fff] dark:placeholder:text-[#fff] p-[3px_15px] rounded-md dark:border-[#524f4f]
              max-md:w-full dark:bg-[#000] outline-none"
           />
         </div>
@@ -211,7 +221,7 @@ const App = () => {
                         </td>
                         <td className="border border-[#fff] dark:border-[gray] bg-[#ece1e1] p-[10px] dark:bg-[#ccc] dark:text-black text">
                           <div className="flex justify-center items-center">
-                            <MenuCom id={e.id} getReq={getData} />
+                            <MenuCom id={e.id} getReq={getData} obj={e} />
                           </div>
                         </td>
                       </tr>
@@ -240,9 +250,9 @@ const App = () => {
               }
             }}
             ref={addModalRef}
-            className="absolute  top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]"
+            className="fixed top-0 left-0  w-full h-full flex justify-center items-center bottom-0 bg-[#27272792]"
           >
-            <div className="bg-[#fff] dark:bg-[#0d063c] w-[350px] p-[20px] rounded-md">
+            <div className="bg-[#fff] dark:bg-[#0d063c] w-[500px] p-[20px] rounded-md">
               <div className="flex justify-between">
                 <div className="font-medium text-[20px] pb-2">Add</div>
 
@@ -255,7 +265,7 @@ const App = () => {
               </div>
               {/* form */}
               <div className="pt-4">
-                <FormCom req={postData} />
+                <FormCom req={postData} type="addModal" />
               </div>
             </div>
           </div>
@@ -270,9 +280,9 @@ const App = () => {
               }
             }}
             ref={editModalRef}
-            className="absolute  top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]"
+            className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[#27272792]"
           >
-            <div className="bg-[#fff] dark:bg-[#0d063c] w-[350px] p-[20px] rounded-md">
+            <div className="bg-[#fff] dark:bg-[#0d063c] w-[500px] p-[20px] rounded-md">
               <div className="flex justify-between">
                 <div className="font-medium text-[20px] pb-2">Edit</div>
 
@@ -283,11 +293,8 @@ const App = () => {
                   <i className="bx bx-x"></i>
                 </button>
               </div>
-              {/* form */}
               <div className="pt-4">
-                <FormCom
-                // req={postData}
-                />
+                <FormCom type="editModal" req={putData} />
               </div>
             </div>
           </div>

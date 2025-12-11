@@ -11,7 +11,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { ListItemIcon } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setEditModal } from "../reducers/globSlice";
+import { setEditModal, setEditObj } from "../../src/reducers/globSlice";
 
 const options = [
   { label: "Edit", icon: <EditIcon /> },
@@ -19,14 +19,15 @@ const options = [
 ];
 
 const ITEM_HEIGHT = 48;
-const MenuCom = ({ id, getReq }) => {
+const MenuCom = ({ id, getReq, obj }) => {
+  let disP = useDispatch();
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    disP(setEditObj(obj));
   };
-
-  let disP = useDispatch();
 
   const handleClose = (e) => {
     setAnchorEl(null);
