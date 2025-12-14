@@ -117,13 +117,13 @@ const App = () => {
             <SelectCom
               arr={[
                 { value: "", label: "All cities" },
-                { value: "dushanbe", label: "Dushanbe" },
-                { value: "bokhtar", label: "Bokhtar" },
+                { value: "Dushanbe", label: "Dushanbe" },
+                { value: "Bokhtar", label: "Bokhtar" },
                 { value: "Kulob", label: "Kulob" },
                 { value: "Hisor", label: "Hisor" },
                 { value: "Khujand", label: "Khujand" },
               ]}
-              name="cities"
+              name="city"
             />
           </div>
           <input
@@ -172,7 +172,7 @@ const App = () => {
                   .filter((e) => {
                     if (statusVal == "active") {
                       return e.status == "ACTIVE";
-                    } else if (statusVal == "inxactive") {
+                    } else if (statusVal == "inactive") {
                       return e.status == "INACTIVE";
                     } else {
                       return e;
@@ -264,16 +264,15 @@ const App = () => {
                 </button>
               </div>
               {/* form */}
-              <div className="pt-4">
-                <FormCom req={postData} type="addModal" />
-              </div>
+              {/* <div className="pt-4"> */}
+              <FormCom req={postData} type="addModal" />
+              {/* </div> */}
             </div>
           </div>
         ) : null}
 
         {editModal ? (
           <div
-            form
             onClick={(e) => {
               if (e.target == editModalRef.current) {
                 disP(setEditModal(false));
