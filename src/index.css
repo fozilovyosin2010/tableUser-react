@@ -1,12 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-.table tr,
-th,
-td {
-  border: 1px solid #fff;
-} */
 
 .text {
   font-family: Georgia, "Times New Roman", Times, serif;
